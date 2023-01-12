@@ -1,0 +1,2 @@
+# bastikahasti
+MSCIT PRACTICALS
