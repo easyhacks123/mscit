@@ -1,0 +1,29 @@
+Practical 2:
+\VKHCG\05-DS\9999-Data
+Practical 3:
+Averaging data
+C:\VKHCG\05-DS\4000-UL\0200-DU\DU-Mean.py
+Logging:
+C:\VKHCG\77-Yoke\Yoke_Logging.py
+Practical 4:
+\VKHCG\01-Vermeulen\01-Retrieve\Retrieve-IP_DATA_ALL_2_SQLite
+\VKHCG\01-Vermeulen\01-Retrieve\Retrieve-Country-Currency.py 
+PRACTICAL 05:
+\VKHCG\01-Vermeulen\02-Assess\Assess-Good-Bad-01.py
+\VKHCG\01-Vermeulen\02-Assess\Assess-Good-Bad-02.py
+\VKHCG\01-Vermeulen\02-Assess\Assess-Good-Bad-03.py
+5B
+\VKHCG\01-Vermeulen\02-Assess\Assess-Network-Routing-Company.py 
+\VKHCG\01-Vermeulen\02-Assess\Assess-Network-Routing-Customer.py
+\VKHCG\01-Vermeulen\02-Assess\Assess-Network-Routing-Node.py 
+Practical 6:
+\VKHCG\01-Vermeulen\03-Process\Process_Time.py
+Practical 07:
+\VKHCG\01-Vermeulen\04-Transform\Transform-Linear-Regression.py
+Practical 8:
+\VKHCG\01-Vermeulen\05-Organise\ Organize-Horizontal.py
+\VKHCG\01-Vermeulen\05-Organise\ Organize-Vertical.py
+\VKHCG\01-Vermeulen\05-Organise\ Organize-Island.py
+\VKHCG\01-Vermeulen\05-Organise\ Organize-Secure-Vault.py
+Practical 9:
+\VKHCG\01-Vermeulen\06-Report\Raport-Network-Routing- Customer.py
