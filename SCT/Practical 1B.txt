@@ -1,0 +1,42 @@
+Practical 1B: Calculate the output of neural net using both binary and bipolar sigmoidal function.
+For the network shown in the figure, calculate the net input to output neuron.
+Code :
+#include<iostream.h>
+#include<conio.h>
+#include<math.h>
+void main()
+{
+clrscr();
+int i=0;
+float x[10],b,w[10],net,n,sumxw=0,sigmo,e=2.71828;
+float out;
+cout<<"Enter the number of input : ";
+cin>>n;
+for (i=0;i<n;i++)
+{
+cout<<"Enter value of X"<<i+1;
+cin>>x[i];
+cout<<"Enter value of weight w"<<i+1;
+cin>>w[i];
+}
+cout<<"Enter value of bias";
+cin>>b;
+for (i=0;i<n;i++)
+{
+sumxw=sumxw+w[i]*x[i];
+}
+net=(sumxw+b);
+cout<<"******output*********";
+cout<<"\nnet="<<net<<endl;
+if(net<0)
+{out=0;}
+else if((net>=0)&&(net<=1))
+{out=net;}
+else
+out=1;
+cout<<"Output ="<<out;
+cout<<"\n\n------------x-------------";
+cout<<"\n\nBinary sigmodial actication function : "<<(1/(1+(pow(e,-net))));
+cout<<"\n\nBipolar sigmodial actication function : "<<(2/(1+(pow(e,-net))));
+getch();
+}
