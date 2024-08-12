@@ -1,0 +1,111 @@
+import hashlib
+
+class Client:
+    def __init__(self):
+        self.identity = "Dinesh"
+
+class Transaction:
+    def __init__(self, sender, recipient, amount):
+        self.sender = sender
+        self.recipient = recipient
+        self.amount = amount
+
+    def __str__(self):
+        return f"{self.sender} -> {self.recipient}: {self.amount}"
+
+def sha256(message):
+    return hashlib.sha256(message.encode('ascii')).hexdigest()
+
+def mine(message, difficulty=1):
+    assert difficulty >= 1
+    prefix = '1' * difficulty
+    for i in range(1000):
+        digest = sha256(str(hash(message)) + str(i))
+        if digest.startswith(prefix):
+            print("After " + str(i) + " iterations found nonce: " + digest)
+            return digest
+
+class Block:
+    def __init__(self):
+        self.verified_transactions = []
+        self.previous_block_hash = ""
+        self.nonce = 0  # Initialize nonce as an integer
+
+    def compute_hash(self):
+        block_string = (
+            str([str(tx) for tx in self.verified_transactions]) +  # Convert transactions to strings
+            self.previous_block_hash +
+            str(self.nonce)  # Convert nonce to string
+        )
+        return sha256(block_string)
+
+def dump_blockchain(blockchain):
+    for i, block in enumerate(blockchain):
+        print(f"Block {i}:")
+        print(f"Hash: {block.compute_hash()}")
+        print(f"Previous Hash: {block.previous_block_hash}")
+        print(f"Nonce: {block.nonce}")
+        print("Transactions:")
+        for transaction in block.verified_transactions:
+            print(transaction)
+        print("-" * 30)
+
+# Example usage
+last_transaction_index = 0
+TPCoins = []
+last_block_hash = ""
+
+Dinesh = Client()
+transactions = [
+    Transaction("Genesis", Dinesh.identity, 500.0),
+    Transaction(Dinesh.identity, "Bob", 20.0),
+    Transaction(Dinesh.identity, "Alice", 30.0),
+    Transaction("Alice", "Bob", 10.0)
+]
+
+# Miner 1 adds a block
+block = Block()
+for i in range(3):
+    if last_transaction_index < len(transactions):  # Check if there are enough transactions
+        temp_transaction = transactions[last_transaction_index]
+        # Validate transaction
+        block.verified_transactions.append(temp_transaction)
+        last_transaction_index += 1
+
+block.previous_block_hash = last_block_hash
+block.nonce = mine(block.compute_hash(), 2)
+digest = block.compute_hash()
+TPCoins.append(block)
+last_block_hash = digest
+
+# Miner 2 adds a block
+block = Block()
+for i in range(3):
+    if last_transaction_index < len(transactions):  # Check if there are enough transactions
+        temp_transaction = transactions[last_transaction_index]
+        # Validate transaction
+        block.verified_transactions.append(temp_transaction)
+        last_transaction_index += 1
+
+block.previous_block_hash = last_block_hash
+block.nonce = mine(block.compute_hash(), 2)
+digest = block.compute_hash()
+TPCoins.append(block)
+last_block_hash = digest
+
+# Miner 3 adds a block
+block = Block()
+for i in range(3):
+    if last_transaction_index < len(transactions):  # Check if there are enough transactions
+        temp_transaction = transactions[last_transaction_index]
+        # Validate transaction
+        block.verified_transactions.append(temp_transaction)
+        last_transaction_index += 1
+
+block.previous_block_hash = last_block_hash
+block.nonce = mine(block.compute_hash(), 2)
+digest = block.compute_hash()
+TPCoins.append(block)
+last_block_hash = digest
+
+dump_blockchain(TPCoins)

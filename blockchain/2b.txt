@@ -1,0 +1,61 @@
+import hashlib
+
+class Block:
+    def __init__(self):
+        self.verified_transactions = []
+        self.previous_block_hash = ""  # Initialize with an empty string
+        self.nonce = ""  # Initialize with an empty string
+
+    def compute_hash(self):
+        """
+        Compute a hash of the block's contents.
+        """
+        # Convert the block's contents to a string representation
+        block_string = (str(self.verified_transactions) + 
+                        self.previous_block_hash + 
+                        self.nonce)
+        return hashlib.sha256(block_string.encode()).hexdigest()
+
+    def __str__(self):
+        return (f"Block(hash: {self.compute_hash()}, "
+                f"prev_hash: {self.previous_block_hash}, "
+                f"nonce: {self.nonce})")
+
+# Initialize blockchain and transactions
+last_block_hash = ""
+Dinesh = Client()
+t0 = Transaction("Genesis", Dinesh.identity, 500.0)
+
+# Create the genesis block
+block0 = Block()
+block0.previous_block_hash = ""  # Set to an empty string instead of None
+block0.nonce = ""  # Set to an empty string instead of None
+block0.verified_transactions.append(t0)
+
+# Append the block to the blockchain
+TPCoins = [block0]
+
+def display_transaction(transaction):
+    trans_dict = transaction.to_dict()
+    print("Sender: " + trans_dict['sender'])
+    print('-----')
+    print("Recipient: " + trans_dict['recipient'])
+    print('-----')
+    print("Value: " + str(trans_dict['value']))
+    print('-----')
+    print("Time: " + str(trans_dict['time']))
+    print('-----')
+
+def dump_blockchain(blockchain):
+    print("Number of blocks in the chain: " + str(len(blockchain)))
+    for x in range(len(blockchain)):
+        block_temp = blockchain[x]
+        print("Block # " + str(x))
+        print(block_temp)
+        for transaction in block_temp.verified_transactions:
+            display_transaction(transaction)
+        print('--------------')
+        print('=====================================')
+
+# Dump the blockchain
+dump_blockchain(TPCoins)

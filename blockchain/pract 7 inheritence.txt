@@ -1,0 +1,38 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+// Defining parent contract
+contract Parent {
+    // Declaring internal state variable
+    uint internal sum;
+
+    // Defining external function to set value of internal state variable sum
+    function setValue() external {
+        uint a = 10;
+        uint b = 20;
+        sum = a + b;
+    }
+}
+
+// Defining child contract inheriting from parent
+contract Child is Parent {
+    // Defining external function to return value of internal state variable sum
+    function getValue() external view returns (uint) {
+        return sum;
+    }
+}
+
+// Defining caller contract
+contract Caller {
+    // Creating child contract object
+    Child public cc = new Child();
+
+    // Defining function to call setValue and getValue functions
+    function testInheritance() public {
+        cc.setValue();
+    }
+
+    function getResult() public view returns (uint) {
+        return cc.getValue();
+    }
+}
