@@ -1,0 +1,183 @@
+(I).Variable
+
+
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.6.12 <0.9.0;
+contract Variables
+{
+string public d1="AnjaliAnushkaRupa";
+function foo() public pure returns(int){
+int a=10;
+return a;
+}
+uint public timestamp = block.timestamp;
+}
+
+
+// Solidity program to demonstrate state variables
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.6.12 <0.9.0;
+// Creating a contract
+contract Solidity_var_Test {
+ // Declaring a state variable
+ uint8 public state_var;
+ // Defining a constructor
+ constructor() public
+ {
+ state_var = 16;
+ }
+}
+
+
+
+// Solidity program to show Global variables
+
+
+pragma solidity >=0.6.12 <0.9.0;
+contract Test {
+address public admin;
+constructor() public {
+admin = msg.sender;
+}
+}
+
+
+
+(II).Operators
+
+
+// Solidity contract to demonstrate Arithemetic Operator
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.6.12 <0.9.0;
+contract Operators {
+ uint16 public a = 20;
+ uint16 public b = 10;
+ uint public sum = a + b;
+ uint public diff = a - b;
+ uint public mul = a * b;
+ uint public div = a / b;
+ uint public mod = a % b;
+ uint public dec = --b;
+ uint public inc = ++a;
+}
+
+
+
+(III).Loops
+
+
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.6.12 <0.9.0;
+contract Loops
+{
+int public j=0;
+int public k=0;
+int public l=0;
+function forLoop() public returns (int)
+{
+for(int i=0; i<5;i++)
+{
+j++;
+}
+return j;
+}
+function whileLoop() public returns (int)
+{
+int i=0;
+while(i<5)
+{
+k++;
+i++;
+}
+return k;
+}
+function dowhileLoop() public returns (int)
+{
+int i=0;
+do
+{
+l++;
+i++;
+}
+while(i<5);
+return 1;
+}
+}
+
+
+
+
+(IV).Decision Making
+
+
+// Solidity program to demonstrate the use of 'if statement'
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.6.12 <0.9.0;
+contract ifstatementts {
+ // Declaring state variable
+ uint i = 10;
+ // Defining function to demonstrate use of 'if statement'
+ function decision_making() public view returns(bool) {
+ if (i < 10) {
+ return true;
+ } else {
+ return false;
+ }
+ }
+}
+OUTPUT:
+// Solidity program to demonstrate the use of 'if...else' statement
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract ifelsestat {
+ uint public i = 10;
+ bool public even;
+ function decision_making() public {
+ if (i % 2 == 0) {
+ even = true;
+ } else {
+ even = false;
+ }
+ }
+ function getResult() public view returns (bool) {
+ return even;
+ }
+}
+
+
+(V) Strings
+
+
+// Solidity program to demonstrate strings (by default)
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity ^0.8.0;
+contract Strings
+{
+string str1 = "ANJALI";
+string str2 = "ANUSHKA";
+function getstr1() public view returns(string memory)
+{
+return str1;
+}
+function getstr2() public view returns(string memory)
+{
+return str2;
+}
+}
+
+// Solidity program to demonstrate strings (input from user)
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract strings {
+string public str;
+constructor(string memory str_in) {
+str = str_in;
+}
+ function str_out() public view returns (string memory) {
+ return str;
+ }
+}

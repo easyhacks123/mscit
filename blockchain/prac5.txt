@@ -1,0 +1,150 @@
+PRACTICAL NO : 5
+
+
+Implement and demonstrate the use of the following in Solidity :
+
+(I).Arrays
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract Types {
+ // Declaring state variables
+ int[5] public data;
+ uint[6] public data1;
+ // Function to initialize the arrays
+ function array_example() public {
+ data = [int(50), -63, 77, -28, 90];
+ data1 = [uint(10), 20, 30, 40, 50, 60];
+ }
+ // Function to return the values of the arrays
+ function getresult() public view returns (int[5] memory, 
+uint[6] memory) {
+ return (data, data1);
+ }
+}
+
+(II). Enums
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract test {
+ enum FreshJuiceSize{ SMALL, MEDIUM, LARGE }
+ FreshJuiceSize choice;
+ FreshJuiceSize constant defaultChoice = 
+FreshJuiceSize.MEDIUM;
+ function setLarge() public {
+ choice = FreshJuiceSize.LARGE;
+ }
+ function getChoice() public view returns (FreshJuiceSize) {
+ return choice;
+ }
+ function getDefaultChoice() public pure returns (uint) {
+ return uint(defaultChoice);
+ }
+}
+
+
+
+(III).Structs
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract Bookstruct {
+ struct Book {
+ string title;
+ string author;
+ uint book_id;
+ }
+ Book public book;
+ function setBook() public {
+ book = Book('Learn Java', 'TP', 1);
+ }
+ function getBookId() public view returns (uint) {
+ return book.book_id;
+ }
+}
+
+
+
+(IV).Mappings
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract LedgerBalancemapping {
+ mapping(address => uint) public balance;
+ function updateBalance() public returns(uint) {
+ balance[msg.sender] = 20;
+ return balance[msg.sender];
+ }
+}
+
+
+(V).Conversion
+
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+contract Conversion
+{
+uint a=10;
+uint8 b=10;
+uint16 c=10;
+function add() public view returns (uint)
+{
+uint d = a + uint(b) + uint(c);
+return d;
+}
+}
+
+ 
+(VI).Ether Units
+
+
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.8.2 <0.9.0;
+contract EtherUnits
+{
+function units() public pure returns (bool,bool,bool)
+{
+bool a=false;
+bool b=false;
+bool c=false;
+if ((1 ether) * 10**18 == 1000 * 10**15) // 1 Ether equals to 
+1000 Finney
+a=true;
+if ((1 ether) * 10**18 == 1000 * 10**12) // 1 Ether equals to 
+1000 Szabo
+b=true;
+if (1 ether == 1000000000000000000000) // 1 Ether equals to 
+1000000000000000000000 Wei
+c=true;
+return (a,b,c);
+}
+}
+
+
+
+(VII).Special Variables
+
+
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.8.2 <0.9.0;
+contract SpecialVariables
+{
+uint data1=0;
+uint data2=0;
+uint data3=0;
+function set() public
+{
+data1=block.difficulty;
+data2=block.timestamp;
+data3=block.number;
+}
+function get() public view returns (uint, uint, uint)
+{
+return(data1, data2, data3);
+}
+}

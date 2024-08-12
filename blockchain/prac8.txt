@@ -1,0 +1,100 @@
+PRACTICAL NO:8
+
+
+Implement and demonstrate the use of the following in Solidity :
+
+
+(I).Error Handling 
+
+
+a.Require statement
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.8.2 <0.9.0;
+contract requireStatement {
+ // Defining function to check input
+ function checkInput(uint _input) public view returns(string 
+memory){
+ require(_input >= 0, "invalid uint8");
+ require(_input <= 255, "invalid uint8");
+ return "Input is Uint8";
+ }
+ // Defining function to use require statement
+ function Odd(uint _input) public view returns(bool){
+ require(_input % 2 != 0);
+ return true;
+ }
+}
+
+
+
+
+b.Assert
+
+
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.8.2 <0.9.0;
+// Creating a contract
+contract AssertStatement {
+ // Defining a state variable
+ bool result;
+ // Defining a function to check condition
+ function checkOverflow(uint _num1, uint _num2) public {
+ uint8 sum = uint8(_num1) + uint8(_num2);
+ assert(sum <= 255);
+ result = true;
+ }
+ // Defining a function to print result of assert statement
+ function getResult() public view returns (string memory) {
+ if (result) {
+ return "No Overflow";
+ } else {
+ return "Overflow exists";
+ }
+ }
+}
+
+
+
+c.Assert
+
+
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.8.2 <0.9.0;
+contract AssertStatement {
+ // Defining a state variable
+ bool result;
+ // Defining a function to check condition
+ function checkOverflow(uint8 sum) public {
+ assert(sum <= 255);
+ result = true;
+ }
+ // Defining a function to print result of assert statement
+ function getResult() public view returns (string memory) {
+ if (result) {
+ return "No Overflow";
+ } else {
+ return "Overflow exists";
+ }
+ }
+}
+
+
+
+d.Revert
+
+
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.8.2 <0.9.0;
+// Creating a contract
+contract RevertStatement {
+ // Defining a function to check condition
+ function checkOverflow(uint _num1, uint _num2) public pure 
+returns (string memory, uint) {
+ uint sum = _num1 + _num2;
+ if (sum > 255) {
+ revert("Overflow exists");
+ } else {
+ return ("No Overflow", sum);
+ }
+ }
+}
